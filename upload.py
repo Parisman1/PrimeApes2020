@@ -29,15 +29,14 @@ def splitVideo(vidFileName, imageListInput, folderName):
     framecount = 1 
     folder = folderName    
     vidcap = cv2.VideoCapture(str(vidFileName))
-    image = vidcap.read()
-    success = image != NULL
-    #success = True
+    success, image = vidcap.read()
+    #success = image != None
     while success:
-            success,image = vidcap.read()
             print ('Read a new frame: '), success
             cv2.imwrite(os.path.join(folder,"frame{:d}.jpg".format(framecount)), image)     # save frame as JPEG file
             print("{} images are extacted in {}.".format(framecount,folder))
             framecount += 1
+            success,image = vidcap.read()
         
 def getFPS():
     #note: This fuction does not work if the video does not have the FPS in its properties
