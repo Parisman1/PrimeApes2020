@@ -142,6 +142,8 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         global maxCount
         global cir
         global img
+        if len(image_list) == 0:
+            return 0
         try:
             img.close()
             print(img, "closed")
@@ -153,7 +155,7 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         img = Image.open(image_list[count])
       #  print("OPENED:", image_list[count])       
       #  print("The current frame # is:", count+1)
-
+      
         arr = np.array(img)
         arr = np.rot90(arr, -1)
         img_arr = pg.ImageItem(arr)

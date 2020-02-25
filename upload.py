@@ -20,8 +20,8 @@ def openFile():
     options = QFileDialog.Options()
     options |= QFileDialog.DontUseNativeDialog
     fileName, _ = QFileDialog.getOpenFileName(None,"QFileDialog.getOpenFileName()", "","Video Files (* avi);;Python Files (*.py)", options=options)
-#    if fileName:
-#        print(fileName)
+    if fileName:
+        print(fileName)
     return fileName
 
 def splitVideo(vidFileName, imageListInput, folderName):
@@ -29,8 +29,9 @@ def splitVideo(vidFileName, imageListInput, folderName):
     framecount = 1 
     folder = folderName    
     vidcap = cv2.VideoCapture(str(vidFileName))
-    success,image = vidcap.read()
-    success = True
+    image = vidcap.read()
+    success = image != NULL
+    #success = True
     while success:
             success,image = vidcap.read()
             print ('Read a new frame: '), success
