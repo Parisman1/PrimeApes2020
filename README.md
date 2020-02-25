@@ -25,7 +25,7 @@ Pupil diameter measurements can be exported to a csv file.
 
 **2. Install packages** - Open the Anaconda Prompt and install the necessary packages
 
-- *opencv* `conda install -c menpo opencv`
+- *opencv* `pip install opencv-python`
 
 - *filterpy* `conda install -c conda-forge filterpy`
 
@@ -40,6 +40,8 @@ Pupil diameter measurements can be exported to a csv file.
 - *pillow* `conda install pillow`
 
 - *pandas* `conda install pandas`
+
+- *memory_profiler* `pip install -U memory_profiler`
 
 **3. Clone repository**
 `git clone https://github.com/j-adamski/Pupil-Dilation-Tracking-GUI.git`
