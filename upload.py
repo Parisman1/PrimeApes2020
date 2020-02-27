@@ -47,7 +47,7 @@ def getFPS():
 def openFrames():
     fileName = openFile() # Filename of whichever frame is clicked
     directory = os.path.split(fileName)[0] #Directory that the video frames are stored in
-    print("Test {0}".format( directory))
+    #print("Test {0}".format( directory))
     if len(directory) == 0:
         return
     path, dirs, files = next(os.walk(directory))
