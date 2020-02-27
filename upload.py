@@ -47,6 +47,9 @@ def getFPS():
 def openFrames():
     fileName = openFile() # Filename of whichever frame is clicked
     directory = os.path.split(fileName)[0] #Directory that the video frames are stored in
+    print("Test {0}".format( directory))
+    if len(directory) == 0:
+        return
     path, dirs, files = next(os.walk(directory))
     file_count = len(files)
     populateArray(file_count,directory)
@@ -58,6 +61,8 @@ def openVidFile():
 
     fileName = openFile() #openFile() opens file browser and returns name of selected video file
     directory = str(QFileDialog.getExistingDirectory(ui_MAIN.MyMainWindow(),"Select Folder to Store Frames")) # File dialog opens for user to create/selet a folder to store the frames extracted from video
+    if len(directory) == 0:
+        return
     splitVideo(fileName, image_list, directory) 
     path, dirs, files = next(os.walk(directory))
     file_count = len(files)

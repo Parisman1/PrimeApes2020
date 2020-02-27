@@ -119,6 +119,8 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         global originalImageDir
         global originalImageFolder
         global num_of_frames
+        if len(image_list) == 0:
+            return 
         originalImageDir = image_list[0].rsplit('/',1)[0]  # Directory that holds frames
         originalImageFolder = originalImageDir.rsplit('/',1)[-1] # Folder that holds frames
         
