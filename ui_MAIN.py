@@ -102,7 +102,6 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def FILEMENU_upload(self):
         global originalImageDir
         global originalImageFolder
-        global fps
         upload.openVidFile()
         self.update()
         self.assignVarNames()
@@ -110,7 +109,6 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def FILEMENU_open(self):
         global originalImageDir
         global originalImageFolder
-        global fps
         upload.openFrames()
         self.update()
         self.assignVarNames()
@@ -130,7 +128,7 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         num_of_frames = len(image_list) #total num of frames
     
         #populating array with 0's 
-        for x in range(0,num_of_frames):    
+        for _ in range(0,num_of_frames):    
             radius_data.append(0)
             
         self.video_title.setText(originalImageDir)
@@ -144,8 +142,6 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def update(self):
         global img_arr
-        global maxCount
-        global cir
         global img
         if len(image_list) == 0:
             return 0
@@ -185,8 +181,8 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             csv_path = originalImageDir.rsplit('/',1)[0] + "/" + csv_file
             print("RADIUSDATA", radius_data)
             ellipseFitting.export_to_csv(radius_data, csv_path)
-            radius_data[:] = []
-            for i in range(num_of_frames):
+            radius_data[:] = [] #clears the radius_data if it had any idea
+            for _ in range(num_of_frames):
                 radius_data.append(0)
             print(radius_data)
             print("\n", csv_file, "saved at", csv_path)

@@ -82,12 +82,3 @@ def img_list():
     
 
 #Note:last frame come out as NULL image - so it need to be ignored
-            
-      
-            
-
-
-
-    
-    
-            

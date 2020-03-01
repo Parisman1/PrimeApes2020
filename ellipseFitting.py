@@ -244,15 +244,12 @@ def save_image(img, center, radius, a, b, phi, file_name, lum = 255):
 
 
 def export_to_csv(radius_data, csv_file):
-
-
     '''
     with open (csv_file, 'w') as csvfile:
         writer = csv.writer(csvfile, lineterminator = '\n', delimiter=',')
         for i in range(len(radius_data)):
             writer.writerows(zip([i+1],[radius_data[i]]))
     return
-    
     '''
     csv_data = [] # list which contents of csv file will be appended to
     if os.path.isfile(csv_file):
