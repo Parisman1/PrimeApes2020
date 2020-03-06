@@ -402,7 +402,7 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
             try:
                 rangeLen = stop - start
-                for i in range(start,stop):
+                for i in range(start,stop+1):
                     if 'circle.jpg' not in image_list[i-1]:
                         self.fitSingleFrame(image_list[i-1], i-1, output_folder_path, thresholdMultiplier)
                     #    print(i/rangeLen)
