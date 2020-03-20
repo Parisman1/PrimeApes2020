@@ -44,7 +44,7 @@ Pupil diameter measurements can be exported to a csv file.
 - *memory_profiler* `pip install -U memory_profiler`
 
 **3. Clone repository**
-`git clone https://github.com/j-adamski/Pupil-Dilation-Tracking-GUI.git`
+`git clone git@github.com:Parisman1/PrimeApes2020.git`
 
 **4. Run program**
 `python ui_MAIN.py`

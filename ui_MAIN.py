@@ -53,7 +53,7 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
        msg.setWindowTitle(windowtitle)
        msg.setDetailedText(detailedtext)
        msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-       retval = msg.exec_()
+     #  retval = msg.exec_()
      #  print("value of pressed message box button:", retval)    
             
 # - - - - - - - - Keyboard/Click Events - - - - - - - - - - - - - - - - - - - - - - - - - - #
@@ -102,30 +102,33 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def FILEMENU_upload(self):
         global originalImageDir
         global originalImageFolder
-        global fps
         upload.openVidFile()
         self.update()
         self.assignVarNames()
-
-            
+      
     def FILEMENU_open(self):
+        global originalImageDir
+        global originalImageFolder
         upload.openFrames()
         self.update()
         self.assignVarNames()
-        
+      
     # Assign variable names - originalImageDir, originalImageFolder
     # Populate radius_data array with 0's based on num_of_frames (amount of frames)
     def assignVarNames(self):
         global originalImageDir
         global originalImageFolder
         global num_of_frames
+        if len(image_list) == 0:
+            #print("Exited")
+            return 
         originalImageDir = image_list[0].rsplit('/',1)[0]  # Directory that holds frames
         originalImageFolder = originalImageDir.rsplit('/',1)[-1] # Folder that holds frames
         
         num_of_frames = len(image_list) #total num of frames
     
         #populating array with 0's 
-        for x in range(0,num_of_frames):    
+        for _ in range(0,num_of_frames):    
             radius_data.append(0)
             
         self.video_title.setText(originalImageDir)
@@ -139,8 +142,6 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def update(self):
         global img_arr
-        global maxCount
-        global cir
         global img
         if len(image_list) == 0:
             return 0
@@ -180,8 +181,8 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             csv_path = originalImageDir.rsplit('/',1)[0] + "/" + csv_file
             print("RADIUSDATA", radius_data)
             ellipseFitting.export_to_csv(radius_data, csv_path)
-            radius_data[:] = []
-            for i in range(num_of_frames):
+            radius_data[:] = [] #clears the radius_data if it had any idea
+            for _ in range(num_of_frames):
                 radius_data.append(0)
             print(radius_data)
             print("\n", csv_file, "saved at", csv_path)
@@ -229,6 +230,7 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         output_folder = originalImageFolder + "_FRAMEOUTPUT"
         output_directory = originalImageDir.rsplit('/',1)[0] # directory where the folder with output frames is stores - does not include folder name in the path
+        print("Output Direct in onClick {}".format(output_directory))
         output_folder_path = output_directory + "/" + output_folder
 
         # If "circle.jpg" is not in the image name for the current frame, then call fitSingleFrame, else - get the original image w/o the circle drawn and fit the frame again
@@ -368,7 +370,17 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     For fitting a range of frames, the range is specified in the text box with a dash (EX: frames one to five --->   1-5)
     '''
     def fitFrameRange(self):        
+        global originalImageFolder
+        global output_directory
+        try:
+            output_directory
+        except NameError:
+            print("No fitting found can not auto fit\n")
+            #self.showdialog("No fitting found can not auto fit")
+            return
+
         output_folder = originalImageFolder + "_FRAMEOUTPUT"
+        #print("Output Directory: {}".format(output_folder))
         output_folder_path = output_directory + "/" + output_folder
         
         thresholdMultiplier = self.threshold_box.text()
