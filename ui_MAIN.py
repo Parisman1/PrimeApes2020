@@ -184,8 +184,8 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             radius_data[:] = [] #clears the radius_data if it had any idea
             for _ in range(num_of_frames):
                 radius_data.append(0)
-            print(radius_data)
-            print("\n", csv_file, "saved at", csv_path)
+            #print(radius_data)
+            print("\n saved at", csv_path)
             gc.collect()
 
         except:
@@ -408,7 +408,8 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     #    print(i/rangeLen)
                         
                     else:
-                        print("image_list[count]", image_list[count])
+                        #print("image_list[count]", image_list[count])
+                        print("image_list[{}]: {}\n".format(i, image_list[i-1]))
                         originalImagePath = originalImageDir + "/frame" + str(i+1) + ".jpg"
                         self.fitSingleFrame(originalImagePath, i, output_folder_path, thresholdMultiplier)
                         self.progressBar.setProperty("value", (i/rangeLen)*100)
