@@ -23,9 +23,7 @@ Pupil diameter measurements can be exported to a csv file.
 
 **1. Download Anaconda** Python Version 3.7  https://www.anaconda.com/download/
 
-**2. Download Python 3.7.x** Python Version 3.7.x  https://www.python.org/downloads/
-
-**3. Install packages** - Open the Anaconda Prompt and install the necessary packages
+**2. Install packages** - Open the Anaconda Prompt and install the necessary packages
 
 - *opencv* `pip install opencv-python`
 
@@ -45,8 +43,8 @@ Pupil diameter measurements can be exported to a csv file.
 
 - *memory_profiler* `pip install -U memory_profiler`
 
-**4. Clone repository**
+**3. Clone repository**
 `git clone git@github.com:Parisman1/PrimeApes2020.git`
 
-**5. Run program**
+**4. Run program**
 `python ui_MAIN.py`
