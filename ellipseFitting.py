@@ -86,7 +86,7 @@ def createLineIterator(P1, P2, img):
 
 '''Idea from: https://stackoverflow.com/questions/45922566/ellipse-fitting-for-pupil-center'''
 
-def find_edge_points(center, radius, img, d_theta = np.pi/180 ):
+def find_edge_points(center, radius, img, d_theta = np.pi/6 ):
 #    r = 2 * radius
     r = 500
     points = []
