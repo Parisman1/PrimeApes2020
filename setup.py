@@ -77,7 +77,7 @@ try:
     print('memory_profiler found')
 except ImportError as e:
     print('memory_profiler not found')
-    install('-U memory_profiler')
+    install('memory_profiler')
 
 print('All the dependencies are properly installed.')
 #exec(open("ui_MAIN.py").read())
