@@ -79,8 +79,9 @@ except ImportError as e:
     print('memory_profiler not found')
     install('-U memory_profiler')
 
+print('All the dependencies are properly installed.')
 #exec(open("ui_MAIN.py").read())
-subprocess.call("python ui_MAIN.py", shell=True)
+#subprocess.call("python ui_MAIN.py", shell=True)
 
 #pip install opencv-python
 #conda install -y -c conda-forge filterpy
